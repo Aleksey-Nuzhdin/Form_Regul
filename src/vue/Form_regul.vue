@@ -14,28 +14,19 @@
             |Алена Смирнова
       .appraisal
         ul.appraisal__list
-          li.appraisal__item
+          li.appraisal__item(
+            v-for="(val, ind) of setStars" :key=ind
+          )
             .appraisal-item__title.text-size_14_20_Med.text-color_grey_900
-              |Скорость
-            .appraisal-item__stars
-              .stars__icon
-          li.appraisal__item
-            .appraisal-item__title
-              |Скорость
-            .appraisal-item__stars
-              .stars__icon
-          li.appraisal__item
-            .appraisal-item__title
-              |Скорость
-            .appraisal-item__stars
-              .stars__icon
-          li.appraisal__item
-            .appraisal-item__title
-              |Скорость
-            .appraisal-item__stars
-              .stars__icon
+              |{{val.title}}
+            ul.appraisal-stars__list
+              li.appraisal-stars__item(
+                v-for="(n, ind) in 5" :key=ind
+                :class="{'appraisal-stars__item_activ':(n <= val.stars)}"
+              )
+                
       .comment
-        textarea.comment__textarea.text-size_16_24_Reg.text-color_grey_600|Комментарий
+        textarea.comment__textarea.text-size_16_24_Reg.text-color_grey_600(placeholder='Комментарий')
         span.comment__max-symbol.text-size_12_16_Reg.text-color_grey_600
           |12/500
       .photo
@@ -61,9 +52,9 @@
 export default {
   data:()=>({
     setStars:[ {title: 'Скорость', stars: 3}
-              ,{title: 'Скорость', stars: 0}
-              ,{title: 'Скорость', stars: 0}
-              ,{title: 'Скорость', stars: 0}],
+              ,{title: 'Скорость отдачи видео', stars: 0}
+              ,{title: 'Качество', stars: 0}
+              ,{title: 'Пунктуальность', stars: 0}],
   }),
   created(){
     this.setStars

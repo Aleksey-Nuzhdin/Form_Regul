@@ -16,14 +16,15 @@
   justify-content: space-between;
   border-radius: 16px 16px 0px 0px;
   border-bottom: 1px solid #EAECF0;
+  border-top: 1px solid #eaecf000;
   padding: 0 16px 0 32px;
 }
 .form-top__close{
   display: block;
   width: 24px;
-  height: 24px;
+  height: 26px;
   background-image: url(/src/assets/img/Union.svg);
-  background-size: 13.31px 13.31px;;
+  background-size: 14px 14px;;
   background-position: center center;
   background-repeat: no-repeat;
 }
@@ -52,7 +53,8 @@
   justify-content: space-between;
 }
 .cart-info__title{
-  margin-bottom: 4px;
+  margin-bottom: 3px;
+  line-height: 25px;
 }
 .appraisal{
   width: 100%;
@@ -67,6 +69,30 @@
   width: 200px;
   height: 60px;
 }
+.appraisal-item__title{
+  margin-bottom: 7px;
+}
+.appraisal-stars__list{
+  display: flex;
+  //column-gap: 2px;
+}
+.appraisal-stars__item{
+  position: relative;
+  width: 34px;
+  height: 32px;
+  mask-image: url(/src/assets/img/Star.svg);
+  mask-size: 22px, 22px;
+  mask-repeat: no-repeat;
+  mask-position: 5px center;
+  background-color: #EAECF0;
+  cursor: pointer;
+
+  &.appraisal-stars__item_activ{
+    background-color: #53C6D1;
+  }
+}
+
+
 .comment{
   display: flex;
   flex-direction: column;
@@ -82,6 +108,9 @@
   border-radius: 6px;
   margin-bottom: 4px;
   resize: none;
+  &::placeholder{
+    opacity: 1;
+  }
 }
 .photo{
 
@@ -98,11 +127,16 @@
   width: 80px;
   height: 80px;
   background: #F3F4F6;
-  
+
+  &.photo__item_add{
+    border: 1px solid #EAECF0;
+    background-image: url(/src/assets/img/plus.svg);
+    background-size: 14px 14px;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
 }
-.photo__item_add{
-  border: 1px solid #EAECF0;
-}
+
 .photo__img{
   height: 100%;
   width: 100%;
@@ -121,10 +155,6 @@
   background-repeat: no-repeat;
 
 }
-
-
-
-
 
 .form-bottom{
   width: 100%;

@@ -5,13 +5,22 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state:{
-    stars: { star1: 1, star2: 2,}
+    appraisalStars: [ {title: 'Скорость', stars: 3}
+                      ,{title: 'Скорость отдачи видео', stars: 1}
+                      ,{title: 'Качество', stars: 4}
+                      ,{title: 'Пунктуальность', stars: 0}],
+    isFormShow: false,
   },
-  mutations:{},
+  mutations:{
+    newAppraisal(s, obj){
+      obj.star.stars = obj.num
+    },
+    toggleFormShow(state){
+      state.isFormShow = !state.isFormShow
+    }
+
+  },
   actions:{},
   getters:{
-    getStars(state){
-      return state.stars
-    }
   },
 })

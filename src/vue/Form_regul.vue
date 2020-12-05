@@ -3,7 +3,9 @@
     .form-top
       .form-top__title.text-size_16_24_Semi.text-color_grey_900
         |Мой отзыв
-      a.form-top__close
+      a.form-top__close(
+        @click='toggleFormShow()'
+      )
     .form-middle
       .cart-info
         img.cart-info__img(src='/img/cart_mid_img.png' alt='photo_1')
@@ -14,17 +16,10 @@
             |Алена Смирнова
       .appraisal
         ul.appraisal__list
-          li.appraisal__item(
-            v-for="(val, ind) of setStars" :key=ind
-          )
-            .appraisal-item__title.text-size_14_20_Med.text-color_grey_900
-              |{{val.title}}
-            ul.appraisal-stars__list
-              li.appraisal-stars__item(
-                v-for="(n, ind) in 5" :key=ind
-                :class="{'appraisal-stars__item_activ':(n <= val.stars)}"
-              )
-                
+          Stars(
+            v-for="(val,ind) of setStars" :key='ind'
+            :star='val'
+          )     
       .comment
         textarea.comment__textarea.text-size_16_24_Reg.text-color_grey_600(placeholder='Комментарий')
         span.comment__max-symbol.text-size_12_16_Reg.text-color_grey_600
@@ -49,16 +44,22 @@
 </template>
 
 <script>
+import Stars from './Appraisal__satrs.vue'
+import { mapGetters, mapMutations } from 'vuex'
+
 export default {
   data:()=>({
-    setStars:[ {title: 'Скорость', stars: 3}
-              ,{title: 'Скорость отдачи видео', stars: 0}
-              ,{title: 'Качество', stars: 0}
-              ,{title: 'Пунктуальность', stars: 0}],
   }),
   created(){
-    this.setStars
-    console.log(this.$store);
+  },
+  methods:{
+    ...mapMutations(['toggleFormShow'])
+  },
+  computed:{
+    setStars(){ return this.$store.state.appraisalStars}
+  },
+  components:{
+    Stars,
   }
 }
 </script>

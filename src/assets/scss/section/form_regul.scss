@@ -27,6 +27,7 @@
   background-size: 14px 14px;;
   background-position: center center;
   background-repeat: no-repeat;
+  cursor: pointer;
 }
 .form-middle{
   padding: 24px 32px 24px 32px;
@@ -176,4 +177,5 @@
   background: #53C6D1;
   border-radius: 6px;
   cursor: pointer;
+  &:focus {outline:none;}
 }

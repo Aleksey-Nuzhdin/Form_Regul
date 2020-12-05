@@ -7,7 +7,7 @@ const { VueLoaderPlugin } = require('vue-loader')
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
-  dist: path.join(__dirname, '../dist'),
+  dist: path.join(__dirname, '../portfolio/form_regul'),
   assets: 'assets/',
   pages_pug: path.join(__dirname, '../src/pug/pages'),
 }
@@ -52,7 +52,7 @@ module.exports = {
     resolve: {
       extensions: ['.js', '.ts'],
       alias:{
-        'Vue': 'vue/dist/vue.js',
+        'vue$': 'vue/dist/vue.js',
         '~': 'src'
       }
     },
@@ -99,10 +99,10 @@ module.exports = {
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
-          publicPath: '/img/',
+          publicPath: '/img/'
         }
       },{
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.(woff(2)?|ttf|eot|svg)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]'

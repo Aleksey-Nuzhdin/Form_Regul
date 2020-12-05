@@ -6,5 +6,8 @@
 @import '_misc/mixins.scss';
 @import '_misc/setups.scss';
 
+//modif
+@import 'modif/text/size';
+@import 'modif/text/color';
 //style
-@import 'section/form_regul.scss'
+@import 'section/form_regul.scss';

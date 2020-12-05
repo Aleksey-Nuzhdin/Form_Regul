@@ -16,3 +16,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  #app{
+    height: 100%;
+    width: 100%;
+    background-color: rgb(128, 128, 128);
+  }
+</style>

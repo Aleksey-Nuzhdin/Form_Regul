@@ -7,6 +7,15 @@
   justify-content: space-between;
   background-color: #fff;
   border-radius: 16px;
+
+  @include phones{
+    max-width: 320px;
+    border-radius: 16px 16px 0 0;
+
+    &.form_step_2{
+      border-radius: 0px;
+    }
+  }
 }
 .form-top{
   height: 56px;
@@ -17,6 +26,17 @@
   border-bottom: 1px solid #EAECF0;
   border-top: 1px solid #eaecf000;
   padding: 0 16px 0 32px;
+
+  @include phones{
+    padding: 16px;
+    border: none;
+
+    &.form-top_step_2{
+      border-bottom: 1px solid #EAECF0;
+      border-top: 1px solid #eaecf000;
+      border-radius: 0;
+    }
+  }
 }
 .form-top__close{
   display: block;
@@ -32,12 +52,20 @@
   padding: 24px 32px 24px 32px;
   flex-grow: 1;
   border-bottom: 1px solid #EAECF0;
+  @include phones{
+    padding: 16px;
+    padding-top: 0;
+  }
 }
 .cart-info{
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   margin-bottom: 32px;
+
+  @include phones{
+    margin-bottom: 17px;
+  }
 }
 .cart-info__img{
   background: #626262;
@@ -45,6 +73,10 @@
   width: 102px;
   border-radius: 6px;
   margin-right: 20px;
+  @include phones{
+    height: 56px;
+    width: 84px;
+  }
 }
 .cart-info__text{
   height: 44px;
@@ -52,6 +84,11 @@
   margin: 10px 0;
   flex-direction: column;
   justify-content: space-between;
+
+  @include phones{
+    margin-top: 12px;
+    margin-bottom: 8px;
+  }
 }
 .cart-info__title{
   line-height: 25px;
@@ -59,11 +96,20 @@
 .appraisal{
   width: 100%;
   margin-bottom: 28px;
+
+  @include phones{
+    margin-bottom: 0;
+    
+  }
 }
 .appraisal__list{
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+
+  @include phones{
+    gap: 16px;
+  }
 }
 .appraisal__item{
   width: 200px;
@@ -74,7 +120,10 @@
 }
 .appraisal-stars__list{
   display: flex;
-  //column-gap: 2px;
+  
+  @include phones{
+    gap: 4px
+  }
 }
 .appraisal-stars__item{
   position: relative;
@@ -90,6 +139,11 @@
   &.appraisal-stars__item_activ{
     background-color: #53C6D1;
   }
+
+  @include phones{
+    width: 32px;
+    height: 32px;
+  }
 }
 
 
@@ -98,6 +152,10 @@
   flex-direction: column;
   align-items: flex-end;
   margin-bottom: 16px;
+
+  @include phones{
+    margin-top: 14px;
+  }
 }
 .comment__textarea{
   height: 100px;
@@ -111,6 +169,11 @@
   resize: none;
   &::placeholder{
     opacity: 1;
+  }
+
+  @include phones{
+    height: 146px;
+    padding-top: 16px;
   }
 }
 .photo{
@@ -169,6 +232,17 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+  @include phones{
+    border-radius: 0 0 0 0;
+    height: 69px;
+    padding: 16px;
+    border-top: 15px;
+
+    &.from-bottom_step_2{
+      height: 68px;
+    }
+  }
 }
 .form-bottom__btn-submit{
   display: flex;
@@ -182,4 +256,48 @@
   border-radius: 6px;
   cursor: pointer;
   &:focus {outline:none;}
+}
+.step_1, .step_2{
+  display: flex;
+  flex-direction: column;
+}
+.step_1{
+  height: 573px;
+}
+
+.step_2{
+  height: 624px;
+}
+.form_step_1{
+  margin-top: 56px;
+  height: 573px;
+}
+.form_step_2{
+  margin-top: 0px;
+  height: 629px;
+}
+.form-bottom__btn-next{
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  width: 120px;
+  height: 36px;
+  background: #53C6D1;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.form-top_step_2_wrap-title{
+  display: flex;
+}
+.step-back{
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  background-image: url(/src/assets/img/arrow.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 16px 16px;
+  cursor: pointer;
 }

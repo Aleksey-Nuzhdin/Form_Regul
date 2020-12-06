@@ -1,51 +1,65 @@
 <template lang='pug'>
-  article.form-regul
-    .form-top
-      .form-top__title.text-size_16_24_Semi.text-color_grey_900
-        |Мой отзыв
-      a.form-top__close(
-        @click='toggleFormShow()'
-      )
-    .form-middle
-      .cart-info
-        img.cart-info__img(src='/img/cart_mid_img.png' alt='photo_1')
-        .cart-info__text
-          .cart-info__title.text-size_16_24_Semi.text-color_grey_900
-            |Фоточки в свадебном платьице
-          .cart-info__person.text-size_12_16_Reg.text-color_grey_700
-            |Алена Смирнова
-      .appraisal
-        ul.appraisal__list
-          Stars(
-            v-for="(val,ind) of setStars" :key='ind'
-            :star='val'
-          )     
-      .comment
-        textarea.comment__textarea.text-size_16_24_Reg.text-color_grey_600(placeholder='Комментарий'
-          v-model='textTextarea'
+  article.form-regul(
+    :class='{form_step_1: step == 1, form_step_2: step == 2}'
+  )
+    .step_1( v-show='step == 1')
+      .form-top
+        .form-top__title.text-size_16_24_Semi.text-color_grey_900
+          |Новый отзыв
+        a.form-top__close(
+          @click='toggleFormShow()'
         )
-        span.comment__max-symbol.text-size_12_16_Reg.text-color_grey_600
-          |{{textTextarea.length == 0 ? 12: textTextarea.length}}/{{setValidation.maxLenghtTextArea}}
-      .photo
-        ul.photo__list
-          li.photo__item.photo__item_add(
-            @click='addPhoto()'
+      .form-middle
+        .cart-info
+          img.cart-info__img(src='/img/cart_mid_img.png' alt='photo_1')
+          .cart-info__text
+            .cart-info__title.text-size_16_24_Semi.text-color_grey_900
+              |Фоточки в свадебном платьице
+            .cart-info__person.text-size_12_16_Reg.text-color_grey_700
+              |Алена Смирнова
+        .appraisal
+          ul.appraisal__list
+            Stars(
+              v-for="(val,ind) of setStars" :key='ind'
+              :star='val'
+            )
+      .form-bottom
+        button.form-bottom__btn-next.text-color_white.text-size_14_20_Semi(
+          @click='nextStep()'
+        )
+          |Продолжить
+    .step_2( v-show='step == 2')
+      .form-top.form-top_step_2
+        .form-top_step_2_wrap-title
+          a.step-back(
+            @click="stepBack()"
           )
-          li.photo__item(
-            v-for='(val, ind) in setPhoto' :key='ind'
+          .form-top__title.text-size_16_24_Semi.text-color_grey_900
+            |Новый отзыв
+        a.form-top__close(
+          @click='toggleFormShow()'
+        )
+      .form-middle
+        .comment
+          textarea.comment__textarea.text-size_16_24_Reg.text-color_grey_600(placeholder='Комментарий'
+            v-model='textTextarea'
           )
-            img.photo__img(:src='val')
-          
-          a.delete-photo(
-            v-if="setPhoto.length > 0"
-            @click="deletePhoto()"
-          )
-
-    .form-bottom
-      button.form-bottom__btn-submit.text-color_white.text-size_14_20_Semi(
-        @click='subForm()'
-      )
-        |Отправить
+          span.comment__max-symbol.text-size_12_16_Reg.text-color_grey_600
+            |{{textTextarea.length == 0 ? 12: textTextarea.length}}/{{setValidation.maxLenghtTextArea}}
+        .photo
+          ul.photo__list
+            li.photo__item.photo__item_add(
+              @click='addPhoto()'
+            )
+            li.photo__item(
+              v-for='(val, ind) in setPhoto' :key='ind'
+            )
+              img.photo__img(:src='val')
+      .form-bottom.from-bottom_step_2
+        button.form-bottom__btn-submit.text-color_white.text-size_14_20_Semi(
+          @click='subForm()'
+        )
+          |Отправить
 
 </template>
 
@@ -60,7 +74,8 @@ export default {
       minCountPhoto: 1,
       minAppraisal: 1,
     },
-    textTextarea: ''
+    textTextarea: '',
+    step: 1,
   }),
   created(){
   },
@@ -85,20 +100,29 @@ export default {
     },
     validation(){
       if(!this.validTextarea()){
-        alert('Проверте количестуво симвовлов')
+        alert('Напишите свой комментарий')
         return false
       }
       if(!this.validAppraisal()){
-        console.log(this.validAppraisal());
         alert('Поставьте все оценки')
         return false
       }
       if(!this.validCounPhotot()){
-        alert('Добавть хотябы 1 фотографию')
+        alert('Добавьте хотя бы 1 фотографию')
         return false
       }
       return true
 
+    },
+    nextStep(){
+      if(!this.validAppraisal()){
+        alert('Поставьте все оценки')
+        return 
+      }
+      this.step++
+    },
+    stepBack(){
+      this.step--
     },
     subForm(){
       if(this.validation()){

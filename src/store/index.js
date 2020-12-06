@@ -6,8 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state:{
     appraisalStars: [ {title: 'Скорость', stars: 3}
-                      ,{title: 'Скорость отдачи видео', stars: 1}
-                      ,{title: 'Качество', stars: 4}
+                      ,{title: 'Скорость отдачи видео', stars: 0}
+                      ,{title: 'Качество', stars: 0}
                       ,{title: 'Пунктуальность', stars: 0} ],
     setPhototSrc:[ '/img/photo_1.png'
                   ,'/img/photo_2.png'

@@ -1,5 +1,7 @@
 <template lang='pug'>
-  #app
+  #app(
+    :class="{app_phone: screenWidth <= 520}"
+  )
     transition(name="toast")
       .toast__mesage.text-color_white.text-size_14_20_Med( 
         v-if="isShowToast"
@@ -13,8 +15,8 @@
       @click='toggleFormShow()'
     )
       |Оставить отзыв
-    Form(v-else)
-    
+    Form(v-else-if="!isShowToast && screenWidth > 520")
+    FormPhone(v-else)
 </template>
 
 <script>
@@ -26,8 +28,11 @@ export default {
   data:()=>({
     screenWidth: 1200,
   }),
-  created(){ 
+  created(){
     window.addEventListener('resize', this.updateScriinWidth);
+  },
+  mounted(){
+    this.updateScriinWidth()
   },
   methods:{
     ...mapMutations(['toggleFormShow', 'hideToast']),
@@ -62,7 +67,7 @@ export default {
   }
   .toast__mesage{
     position: absolute;
-    right: 100px;
+    right: 10px;
     top: 50px;
     display: flex;
     align-items: center;
@@ -88,6 +93,11 @@ export default {
     min-height: 100%;
     width: 100%;
     background-color: rgb(128, 128, 128);
+
+    &.app_phone{
+      padding: 0;
+      padding-top:1px;
+    }
   }
   .button_show{
     width: initial;

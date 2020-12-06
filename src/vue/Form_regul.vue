@@ -85,20 +85,18 @@ export default {
     },
     validation(){
       if(!this.validTextarea()){
-        alert('Проверте количестуво симвовлов')
+        alert('Напишите свой комментарий')
         return false
       }
       if(!this.validAppraisal()){
-        console.log(this.validAppraisal());
         alert('Поставьте все оценки')
         return false
       }
       if(!this.validCounPhotot()){
-        alert('Добавть хотябы 1 фотографию')
+        alert('Добавьте хотя бы 1 фотографию')
         return false
       }
       return true
-
     },
     subForm(){
       if(this.validation()){

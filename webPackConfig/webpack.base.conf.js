@@ -7,7 +7,7 @@ const { VueLoaderPlugin } = require('vue-loader')
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
-  dist: path.join(__dirname, '../portfolio/form_regul'),
+  dist: path.join(__dirname, '../dist'),
   assets: 'assets/',
   pages_pug: path.join(__dirname, '../src/pug/pages'),
 }

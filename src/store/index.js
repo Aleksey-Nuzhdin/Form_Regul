@@ -36,6 +36,13 @@ export default new Vuex.Store({
     hideToast(state){
       state.isShowToast = false
     },
+    resetState(state){
+      state.setPhototSrc =[]
+      state.appraisalStars = state.appraisalStars.map(el => {
+        el.stars = 0
+        return el
+      })
+    }
 
   },
   actions:{},

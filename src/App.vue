@@ -19,17 +19,21 @@
 
 <script>
 import Form from './vue/Form_regul.vue'
+import FormPhone from './vue/Form_regul_phone.vue'
 import { mapMutations } from 'vuex';
 
 export default {
   data:()=>({
-    
+    screenWidth: 1200,
   }),
-  created(){
-    
+  created(){ 
+    window.addEventListener('resize', this.updateScriinWidth);
   },
   methods:{
-    ...mapMutations(['toggleFormShow', 'hideToast'])
+    ...mapMutations(['toggleFormShow', 'hideToast']),
+    updateScriinWidth(){
+      this.screenWidth = window.innerWidth
+    }
   },
   computed:{
     isFormShow(){
@@ -40,7 +44,7 @@ export default {
     }
   },
   components:{
-    Form,
+    Form,FormPhone
   }
 }
 </script>

@@ -42,7 +42,9 @@
           )
 
     .form-bottom
-      button.form-bottom__btn-submit.text-color_white.text-size_14_20_Semi
+      button.form-bottom__btn-submit.text-color_white.text-size_14_20_Semi(
+        @click='validation()'
+      )
         |Отправить
 
 </template>
@@ -63,7 +65,7 @@ export default {
   created(){
   },
   methods:{
-    ...mapMutations(['toggleFormShow','updataPhoto','deletePhoto']),
+    ...mapMutations(['toggleFormShow','updataPhoto','deletePhoto','showToast','hideToast']),
     addPhoto(){
       let src = prompt('укажите ссылку', '');
       if((src.length > 0) && (typeof(src) === "string")){
@@ -71,14 +73,42 @@ export default {
       }
     },
     validTextarea(){
-      if(this.textTextarea.length > 0 && this.textTextarea <= this.setValidation.maxLenghtTextArea) return true
-      return false
+      return !!((this.textTextarea.length > 0) && (this.textTextarea.length <= this.setValidation.maxLenghtTextArea))
     },
     validAppraisal(){
-
+      return this.setStars.every(
+        el => { return el.stars >= this.setValidation.minAppraisal}
+      )
+    },
+    validCounPhotot(){
+      return !!(this.setPhoto.length >= this.setValidation.minCountPhoto)
     },
     validation(){
+      if(!this.validTextarea()){
+        alert('Проверте количестуво симвовлов')
+        return
+      }
+      if(!this.validAppraisal()){
+        console.log(this.validAppraisal());
+        alert('Поставьте все оценки')
+        return
+      }
+      if(!this.validCounPhotot()){
+        alert('Добавть хотябы 1 фотографию')
+        return 
+      }
+      this.ajaxSetform()
+      this.toggleFormShow()
+      this.showMessege()
 
+    },
+    ajaxSetform(){
+
+    },
+    showMessege(){
+    
+      this.showToast()
+      setTimeout(this.hideToast, 1500)
     }
   },
   computed:{

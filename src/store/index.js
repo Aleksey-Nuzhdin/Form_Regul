@@ -14,6 +14,7 @@ export default new Vuex.Store({
                   ,'/img/photo_3.png'
                   ,'/img/photo_4.png' ],
     isFormShow: false,
+    isShowToast: false,
   },
   mutations:{
     newAppraisal(s, obj){
@@ -28,7 +29,13 @@ export default new Vuex.Store({
     },
     deletePhoto(state){
       state.setPhototSrc.pop()
-    }
+    },
+    showToast(state){
+      state.isShowToast = true
+    },
+    hideToast(state){
+      state.isShowToast = false
+    },
 
   },
   actions:{},

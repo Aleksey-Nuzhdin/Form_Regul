@@ -7,7 +7,7 @@ const { VueLoaderPlugin } = require('vue-loader')
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
-  dist: path.join(__dirname, '../dist'),
+  dist: path.join(__dirname, '../portfolio/form_regul'),
   assets: 'assets/',
   pages_pug: path.join(__dirname, '../src/pug/pages'),
 }
@@ -91,6 +91,7 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
+            
             presets: ['@babel/preset-env'],
           }
         }
@@ -99,13 +100,14 @@ module.exports = {
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
-          publicPath: '/img/'
+          publicPath: '/portfolio/form_regul/img/'
         }
       },{
         test: /\.(woff(2)?|ttf|eot|svg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]'
+          name: '[name].[ext]',
+          publicPath: '/portfolio/form_regul/assets/fonts/'
         }
       },{
         test: /\.vue$/,

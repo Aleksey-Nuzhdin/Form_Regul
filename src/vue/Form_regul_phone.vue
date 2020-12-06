@@ -11,7 +11,7 @@
         )
       .form-middle
         .cart-info
-          img.cart-info__img(src='/img/cart_mid_img.png' alt='photo_1')
+          img.cart-info__img(src='/portfolio/form_regul/img/cart_mid_img.png' alt='photo_1')
           .cart-info__text
             .cart-info__title.text-size_16_24_Semi.text-color_grey_900
               |Фоточки в свадебном платьице
@@ -82,7 +82,7 @@ export default {
   methods:{
     ...mapMutations(['toggleFormShow','updataPhoto','deletePhoto','showToast','hideToast','resetState']),
     addPhoto(){
-      let src = prompt('укажите ссылку', '/img/photo_1.png');
+      let src = prompt('укажите ссылку', '/portfolio/form_regul/img/photo_1.png');
       if((src.length > 0) && (typeof(src) === "string")){
         this.updataPhoto(src)
       }

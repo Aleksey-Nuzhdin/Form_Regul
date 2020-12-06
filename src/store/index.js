@@ -9,10 +9,10 @@ export default new Vuex.Store({
                       ,{title: 'Скорость отдачи видео', stars: 0}
                       ,{title: 'Качество', stars: 0}
                       ,{title: 'Пунктуальность', stars: 0} ],
-    setPhototSrc:[ '/img/photo_1.png'
-                  ,'/img/photo_2.png'
-                  ,'/img/photo_3.png'
-                  ,'/img/photo_4.png' ],
+    setPhototSrc:[ '/portfolio/form_regul/img/photo_1.png'
+                  ,'/portfolio/form_regul/img/photo_2.png'
+                  ,'/portfolio/form_regul/img/photo_3.png'
+                  ,'/portfolio/form_regul/img/photo_4.png' ],
     isFormShow: false,
     isShowToast: false,
   },

@@ -22,12 +22,15 @@ export default {
   }),
   methods:{
     ...mapMutations(['newAppraisal']),
+    //Меням классы при наведении
     hoverUpAppraisal(num){
       this.countStars = num
     },
+    //Возвращаем обратно
     hoverDownAppraisal(){
       this.countStars = this.star.stars
     },
+    //Фиксируем при клике
     clickAppraisal(obj){
       this.newAppraisal(obj)
       this.countStars = this.star.stars

@@ -29,6 +29,7 @@ export default {
     screenWidth: 1200,
   }),
   created(){
+    //Следим за размером экрана
     window.addEventListener('resize', this.updateScriinWidth);
   },
   mounted(){
